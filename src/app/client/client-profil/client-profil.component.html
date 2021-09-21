@@ -1,0 +1,186 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div>
+      <h2 data-cy="clientDetailsHeading"><span>Client</span></h2>
+
+      <hr />
+<!--Debut -->
+<ng-template #content let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Nouveau Dossier</h4>
+            <button
+              type="button"
+              class="close"
+              aria-label="Close"
+              (click)="modal.dismiss('Cross click')"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="matricule">Matricule</label>
+                <div class="input-group">
+                  <input
+                    id="matricule"
+                    name="matricule"
+                    style="text-transform:uppercase"
+                    class="form-control"
+                    [(ngModel)]="dossier.matricule"
+                    #matricule="ngModel"
+                  />
+                </div>
+              </div>
+              
+                <label for=" typeDossier">Type de dossier</label>
+                <div class="input-group">
+                  <select
+                    id=" typeDossier"
+                    name=" typeDossier"
+                    class="form-control"
+                    [(ngModel)]="dossier.typeDossier"
+                    #typeDossier="ngModel"
+					            >
+                      
+                    <option *ngFor="let l of  listTypeDossier" value="{{l.id}}">{{l.nomTypeDossier}}</option>
+                    
+                  </select>
+                </div>
+              
+              <label for="dateNaissance">Date de création</label>
+              <div class="input-group">
+                <input
+                  id="datecreation"
+                  type="date"
+                  class="form-control"
+                  placeholder="dd-mm-yyyy"
+                  name="datecreation"
+                  [(ngModel)]="dossier.datecreation"
+                  #datecreation="ngModel"
+                />
+                <div class="input-group-append">
+                  <!--<button
+                    class="btn btn-outline-secondary calendar"
+                    (click)="dateNaissance.toggle()"
+                    type="button"
+                  ></button>-->
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="description">Description</label>
+                <div class="input-group">
+                  <!--<input
+                    id="description"
+                    type="text"
+                    name="description"
+                    class="form-control"
+                    [(ngModel)]="dossier.description"
+                  />-->
+                  <textarea id="description"
+                    type="text"
+                    name="description"
+                    class="form-control"
+                    [(ngModel)]="dossier.description" >
+                  
+                  </textarea>
+
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-dark"
+              (click)="modal.close('Save click')"
+            >
+              Quitter
+            </button>
+            <div class="border text-center">
+              <button (click)="saveDossier()" class="btn btn-info">
+                Ajouter
+              </button>
+            </div>
+          </div>
+        </ng-template>
+<!--fin-->
+<div class="card">
+      <p>
+    <strong class="mb-1">Client:</strong> {{client.nom }}
+    {{client.prenom }}
+  </p>
+      <p><strong class="mb-1">Numéro de téléphone:</strong> {{ client.numTel }}</p>
+      <p><strong class="mb-1">Adresse électronique:</strong> {{ client.adresseMail }}</p>
+
+      </div>
+      <div >
+      <button class="btn btn-primary" (click)="open(content)">Créer un nouveau dossier</button>
+        <div class="row">
+          <div class="col-sm-6" *ngFor="let d of client.dossiers">
+            <div class="card" >
+              <div class="card-body">
+                <h5 class="card-title">{{ d.id }}: {{ d.matricule }}</h5>
+                <h5 class="card-title">Créer le: {{ d.datecreation }}</h5>
+                <p class="card-text">Description: {{ d.description }}</p>
+                <a href="#" class="btn btn-primary" [routerLink]="['/dossierDetail', d.id]">Explorer</a>
+                <button
+                type="button"
+                class="btn btn-danger"
+                (click)="deleteDoc(client.id, d.id)"
+              >
+                Supprimer
+              </button>
+              </div>
+            </div>
+            <p></p>
+          </div>
+        </div>
+      </div>
+      <!--<dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ client.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="notariaApp.client.nom">Nom</span></dt>
+        <dd>
+          <span>{{ client.nom }}</span>
+        </dd>
+        <dt><span jhiTranslate="notariaApp.client.prenom">Prenom</span></dt>
+        <dd>
+          <span>{{ client.prenom }}</span>
+        </dd>
+        <dt><span jhiTranslate="notariaApp.client.sexeClient">Sexe Client</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'notariaApp.Sexe.' + client.sexeClient }}">{{ client.sexeClient }}</span>
+        </dd>
+        <dt><span jhiTranslate="notariaApp.client.dateNaissance">Date Naissance</span></dt>
+        <dd>
+          <span>{{ client.dateNaissance | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="notariaApp.client.numTel">Num Tel</span></dt>
+        <dd>
+          <span>{{ client.numTel }}</span>
+        </dd>
+        <dt><span jhiTranslate="notariaApp.client.adresseMail">Adresse Mail</span></dt>
+        <dd>
+          <span>{{ client.adresseMail }}</span>
+        </dd>
+      </dl>-->
+
+      <button
+        type="submit"
+        (click)="previousState()"
+        class="btn btn-info"
+        data-cy="entityDetailsBackButton"
+      >
+        Back
+      </button>
+
+      <!--<button type="button" [routerLink]="['/client', client.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>-->
+    </div>
+  </div>
+</div>

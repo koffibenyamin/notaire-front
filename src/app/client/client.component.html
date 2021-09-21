@@ -1,0 +1,138 @@
+
+
+<!--<div class="container">
+            <div >
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">Enrégistrer un compte client</h4>
+                  <p class="card-category">Complétez les champs vides</p>
+                </div>
+                <div class="card-body">
+                  <form
+                  *ngIf="!isSuccessful"
+                  name="form"
+                  (ngSubmit)="f.form.valid && saveTutorial()"
+                  #f="ngForm"
+                  novalidate
+                  >
+					<div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Nom</label>
+                          <input type="text" class="form-control" name="nomClient"
+          [(ngModel)]="client.nomClient"
+          required
+          minlength="3"
+          maxlength="20"
+          #nomClient="ngModel">
+          <div class="alert-danger" *ngIf="nomClient.errors && f.submitted">
+          <div *ngIf="nomClient.errors.required">Nom requis</div>
+          <div *ngIf="nomClient.errors.minlength">
+            Le nom doit avoir au moins 3 caractères
+          </div>
+          <div *ngIf="nomClient.errors.maxlength">
+            Le nom ne peut dépasser 20 caractères
+          </div>
+
+          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Prénom</label>
+                          <input type="text" class="form-control" name="prenomClient"
+          [(ngModel)]="client.prenomClient"
+          required
+          minlength="3"
+          maxlength="20"
+          #prenomClient="ngModel">
+          <div class="alert-danger" *ngIf="prenomClient.errors && f.submitted">
+          <div *ngIf="prenomClient.errors.required">Prénom requis</div>
+          <div *ngIf="prenomClient.errors.minlength">
+            Le prénom doit avoir au moins 3 caractères
+          </div>
+          <div *ngIf="prenomClient.errors.maxlength">
+            Le prénom ne peut dépasser 20 caractères
+          </div>
+          </div>
+                        </div>
+                      </div>
+                    </div>
+
+					<div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Adresse mail</label>
+                          <input type="email" class="form-control" name="mailClient"
+          [(ngModel)]="client.mailClient"
+          required
+
+          #mailClient="ngModel">
+          <div class="alert-danger" *ngIf="mailClient.errors && f.submitted">
+          <div *ngIf="mailClient.errors.required">Email requis</div>
+          <div *ngIf="mailClient.errors.email">
+            Email invalide</div>
+          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Numéro de téléphone</label>
+                          <input type="tel" pattern="[0-9]{2} [0-9]{2} [0-9]{2}" class="form-control" maxlength="8"
+                          name="numeroTelephoneClient"
+          [(ngModel)]="client.numeroTelephoneClient"
+          required
+          #numeroTelephoneClient="ngModel">
+          <div class="alert-danger" *ngIf="numeroTelephoneClient.errors && f.submitted">
+          <div *ngIf="numeroTelephoneClient.errors.required">Numéro de téléphone requis</div>
+          </div>
+                        </div>
+                      </div>
+                    </div>
+
+					<!--<div class="row">
+
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Sexe</label>
+                          <input type="text" class="form-control" name="sexeClient"
+          [(ngModel)]="client.sexeClient"
+          required
+
+          #sexeClient="ngModel">
+          <div class="alert-danger" *ngIf="sexeClient.errors && f.submitted">
+          <div *ngIf="sexeClient.errors.required">Veuillez indiquer le sexe du client</div>
+
+          </div>
+                        </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Date de naissance</label>
+                          <input type="date" class="form-control" name="DateNaissance"
+          [(ngModel)]="client.DateNaissance"
+
+          required
+
+          #DateNaissance="ngModel"/>
+          <div class="alert-danger" *ngIf="DateNaissance.errors && f.submitted">
+          <div *ngIf="DateNaissance.errors.required">Date de naissance requis</div>
+
+        </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <button class="btn btn-primary pull-right" >Ajouter</button>
+                    <div class="clearfix"></div>
+                    <div class="alert alert-warning" *ngIf="f.submitted && submitted">
+        la Création de ce compte a échouée!
+      </div>
+                  </form>
+                  <div class="alert alert-success" *ngIf="isSuccessful">
+      Le compte a été créer avec succès!
+    </div>
+                </div>
+              </div>
+            </div>-->
+

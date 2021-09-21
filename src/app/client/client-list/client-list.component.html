@@ -1,0 +1,209 @@
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <ng-template #content let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Nouveau Client</h4>
+            <button
+              type="button"
+              class="close"
+              aria-label="Close"
+              (click)="modal.dismiss('Cross click')"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="nom">Nom</label>
+                <div class="input-group">
+                  <input
+                    id="nom"
+                    style="text-transform:uppercase"
+                    name="nom"
+                    class="form-control"
+                    [(ngModel)]="client.nom"
+                    #nom="ngModel"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="prenom">Prénom</label>
+                <div class="input-group">
+                  <input
+                    id="prenom"
+                    name="prenom"
+                    style="text-transform: capitalize;"
+                    class="form-control"
+                    #prenom="ngModel"
+                    [(ngModel)]="client.prenom"
+                  />
+                </div>
+                <label for=" sexeClient">Sexe</label>
+                <div class="input-group">
+                  <select
+                    id=" sexeClient"
+                    name=" sexeClient"
+                    class="form-control"
+                    [(ngModel)]="client.sexeClient"
+                    #sexeClient="ngModel"
+                  >
+                    <option value="HOMME">Homme</option>
+                    <option value="FEMME">Femme</option>
+                  </select>
+                </div>
+              </div>
+              <label for="dateNaissance">Date de naissance</label>
+              <div class="input-group">
+                <input
+                  id="dateNaissance"
+                  type="date"
+                  class="form-control"
+                  placeholder="dd-mm-yyyy"
+                  name="dateNaissance"
+                  [(ngModel)]="client.dateNaissance"
+                  #dateNaissance="ngModel"
+                />
+                <div class="input-group-append">
+                  <!--<button
+                    class="btn btn-outline-secondary calendar"
+                    (click)="dateNaissance.toggle()"
+                    type="button"
+                  ></button>-->
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="numTel">Numéro de téléphone</label>
+                <div class="input-group">
+                  <input
+                    id="numTel"
+                    name="numTel"
+                    type="text"
+                    pattern="\d*"
+                    size="10"
+                    minlength="8"
+                    maxlength="8"
+                    required
+                    class="form-control"
+                    [(ngModel)]="client.numTel"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="adresseMail">Adresse mail</label>
+                <div class="input-group">
+                  <input
+                    id="adresseMail"
+                    type="email"
+                    name="adresseMail"
+                    class="form-control"
+                    [(ngModel)]="client.adresseMail"
+                  />
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-dark"
+              (click)="modal.close('Save click')"
+            >
+              Quitter
+            </button>
+            <div class="border text-center">
+              <button (click)="saveClient()" class="btn btn-info">
+                Ajouter
+              </button>
+            </div>
+          </div>
+        </ng-template>
+
+        <!--                       Modifier Client                              -->
+        
+
+        <!--                       Modifier Client Fin                             -->
+        <button class="btn btn-primary " (click)="open(content)">Créer un nouveau client</button>
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title">Client</h4>
+            <p class="card-category">Liste des clients</p>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom & prénom</th>
+                    <th scope="col">Numéro de téléphone</th>
+                    <th scope="col">Numéro de téléphone</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let c of clients">
+                    <th scope="row">{{ c.id }}</th>
+                    <td>
+                      <a [routerLink]="['/clientDetail', c.id]"
+                        >{{ c.nom }} {{ c.prenom }}</a
+                      >
+                    </td>
+                    
+                    <td>{{ c.numTel }}</td>
+                    <td>
+                      <a>{{ c.adresseMail }}</a>
+                    </td>
+                    <td>
+                      <button
+                        type="button"
+                        (click)="updateClient(c.id)"
+                        class="btn btn-primary"
+                      >
+                        Modifier
+                      </button>
+                      <button type="button" (click)="deleteClient(c.id)" class="btn btn-danger">
+                        Supprimer
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prénom</th>
+      <th scope="col">Numéro de téléphone</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody >
+    <tr >
+      <th scope="row">1</th>
+      <td>test</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td></td>
+    </tr>
+    <tr *ngFor="let c of clients">
+      <th scope="row">1</th>
+      <td>{{c.nom}}</td>
+      <td>{{c.prenom}}</td>
+      <td>{{c.numTel}}</td>
+      <td>@mdo</td>
+    </tr>
+
+  </tbody>
+</table>-->

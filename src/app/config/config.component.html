@@ -1,0 +1,103 @@
+<div class="content">
+  <div class="col-24">
+    <div>
+      <h2 data-cy="clientDetailsHeading"><span>Configuration</span></h2>
+
+      <hr />
+
+      <div>
+        <div class="row">
+          <div class="col-lg-6 col-md-12">
+            <div class="card">
+              <div class="card-header card-header-warning">
+                <h4 class="card-title">Types de dossiers</h4>
+              </div>
+              <div class="card-body table-responsive">
+                <table class="table table-hover">
+                  <thead class="text-warning">
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Action</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let dos of listTypeDossier">
+                      <td>{{ dos.id }}</td>
+                      <td>{{ dos.nomTypeDossier }}</td>
+                      <td>
+                        <button
+                          type="button"
+                          rel="tooltip"
+                          title="Remove"
+                          class="btn btn-danger btn-link btn-sm"
+                          (click)="deleteTypeDossier(dos.id)"
+                        >
+                          <i class="material-icons">close</i>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <form (ngSubmit)="onSubmitDossier()">
+                  <input
+                    type="text"
+                    class="form-control"
+                    [(ngModel)]="typeDossier.nomTypeDossier"
+                    name="nomTypeDossier"
+                  />
+                  <button class="btn btn-warning" type="submit">Ajouter</button>
+                </form>
+              </div>
+            </div>
+            
+            
+            
+              <div class="card">
+                <div class="card-header card-header-success">
+                  <h4 class="card-title">Types de documents</h4>
+                </div>
+                <div class="card-body table-responsive">
+                  <table class="table table-hover">
+                    <thead class="text-success">
+                      <th>ID</th>
+                      <th>Nom</th>
+                      <th>Action</th>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let doc of listTypeDocument">
+                        <td>{{ doc.id }}</td>
+                        <td>{{ doc.nomTypeDocument }}</td>
+                        <td>
+                          <button
+                            type="button"
+                            rel="tooltip"
+                            title="Remove"
+                            class="btn btn-danger btn-link btn-sm"
+                            (click)="deleteTypeDocument(doc.id)"
+                          >
+                            <i class="material-icons">close</i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <form (ngSubmit)="onSubmitDocument()">
+                    <input
+                      type="text"
+                      class="form-control"
+                      [(ngModel)]="typeDocument.nomTypeDocument"
+                      name="nomTypeDocument"
+                    />
+                    <button class="btn btn-success" type="submit">
+                      Ajouter
+                    </button>
+                  </form>
+                </div>
+              </div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+</div>

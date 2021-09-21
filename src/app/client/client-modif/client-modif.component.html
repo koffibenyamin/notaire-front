@@ -1,0 +1,78 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title2">Modifier Client</h4>
+  
+</div>
+
+<div class="modal-body">
+  <form (ngSubmit) = "onSubmit()">
+    
+    <div class="form-group">
+      <label for="nom">Nom</label>
+      <div class="input-group">
+        <input id="nom" name="nom" style="text-transform:uppercase" class="form-control"  [(ngModel)]="client.nom"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="prenom">Prénom</label>
+      <div class="input-group">
+        <input id="prenom" name="prenom" class="form-control" [(ngModel)]="client.prenom"/>
+      </div>
+      <label for=" sexeClient">Sexe</label>
+      <div class="input-group">
+        <select
+          id=" sexeClient"
+          name=" sexeClient"
+          class="form-control"
+        [(ngModel)]="client.sexeClient">
+          <option value="HOMME">Homme</option>
+          <option value="FEMME">Femme</option>
+        </select>
+      </div>
+    </div>
+    <label for="dateNaissance">Date de naissance</label>
+    <div class="input-group">
+      <input
+        id="dateNaissance"
+        class="form-control"
+        placeholder="yyyy-mm-dd"
+        name="dateNaissance"
+      [(ngModel)]="client.dateNaissance"/>
+    </div>
+    <div class="form-group">
+      <label for="numTel">Numéro de téléphone</label>
+      <div class="input-group">
+        <input
+          id="numTel"
+          name="numTel"
+          type="text"
+          pattern="\d*"
+          size="10"
+          minlength="8"
+          maxlength="8"
+          required
+          class="form-control"
+          [(ngModel)]="client.numTel"
+        />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="adresseMail">Adresse mail</label>
+      <div class="input-group">
+        <input
+          id="adresseMail"
+          type="email"
+          name="adresseMail"
+          class="form-control"
+        [(ngModel)]="client.adresseMail"/>
+      </div>
+    </div>
+    <div class="border text-center">
+      <button class = "btn btn-success" type ="submit">Modifier</button>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button>
+    Quitter
+  </button>
+</div>

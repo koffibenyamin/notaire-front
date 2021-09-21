@@ -1,0 +1,64 @@
+<button class="btn btn-primary " (click)="creer()">Créer un utilisateur</button>
+
+<div class="content">
+        <div class="container-fluid">
+
+          <div class="row">
+            <div class="col-md-12">
+
+              <div class="card">
+                <div class="card-header card-header-primary">
+
+                  <h4 class="card-title ">Gestion des utilisateurs</h4>
+                  <p class="card-category"> Liste des utilisateurs</p>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                    <div class="alert alert-danger" role="alert" *ngIf="_message.length > 0">
+  {{_message}}
+</div>
+                      <thead class=" text-primary">
+                        <th>
+                          ID
+                        </th>
+                        <th>
+                          Nom d'utilisateur
+                        </th>
+                        <th>
+                          Adresse mail
+                        </th>
+                        <th>
+                          Action
+                        </th>
+
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let user of users;">
+                          <td>
+                            {{ user.id }}
+                          </td>
+                          <td>
+                            {{ user.username }}
+                          </td>
+                          <td>
+                            {{ user.email }}
+                          </td>
+                          <td class="td-actions text-right">
+                             <!--edition-->
+                             <button type="button" rel="tooltip" title="Supprimer" class="btn btn-danger btn-link btn-sm" (click)="deleteUser(user.id)">
+                                <i class="material-icons">close</i>
+                              </button>
+                          </td>
+
+                        </tr>
+						</tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+			</div>
+        </div>
+      </div>
+

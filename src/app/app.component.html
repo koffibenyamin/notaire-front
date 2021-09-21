@@ -1,0 +1,107 @@
+
+<div class="card-header card-header-primary" style="text-align:center" *ngIf="!isLoggedIn" >
+              <h3 class="card-title" center>notaria</h3>
+              <p class="card-category">Application de gestion notarial
+              </p>
+            </div>
+
+<app-register *ngIf="counter=='0'"></app-register>
+<app-login *ngIf="!isLoggedIn && counter != '0'" ></app-login>
+
+<div class="wrapper " *ngIf="isLoggedIn">
+    <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
+
+     <div class="logo"><a href=# class="simple-text logo-normal">
+          notaria 
+        </a></div>
+      <div class="sidebar-wrapper" *ngIf="isLoggedIn">
+        <ul class="nav">
+          
+          <li class="nav-item " onlick='class=" active " ' *ngIf="showAdminBoard">
+            <a class="nav-link" href="/admin" routerLink="admin">
+              <i class="material-icons">person</i>
+              <p>Gestion des utilisateurs</p>
+            </a>
+          </li>
+          <li class="nav-item  ">
+            <a class="nav-link" href="/user">
+              <i class="material-icons">library_books</i>
+              <p>Gestion des clients</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="/listdossiers">
+              <i class="material-icons">content_paste</i>
+              <p>Liste des dossiers</p>
+            </a>
+          </li>
+          <li class="nav-item  ">
+            <a class="nav-link" href="/config">
+              <i class="bi bi-tools"></i>
+              <p>Configuration</p>
+            </a>
+          </li>
+
+
+        </ul>
+      </div>
+    </div>
+
+<div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+
+      <!--Navbar   <div id="app" >-->
+
+      <nav  class="container-fluid">
+    <a href="#" class="navbar-brand">notaria</a>
+    <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      <li class="nav-item">
+      </li>
+      <li class="nav-item" *ngIf="showAdminBoard">
+        
+      </li>
+
+      <li class="nav-item">
+        
+      </li>
+    </ul>
+
+    <ul  class="navbar-nav ml-auto" *ngIf="showAdminBoard">
+    <li class="nav-item" >
+        
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+
+      <li class="nav-item">
+        <a href="/login" class="nav-link" routerLink="login">Se connecter</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+      <li class="nav-item">
+        <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+      </li>
+      <li class="nav-item">
+        <a href class="nav-link" (click)="logout()">Se déconnecter</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!--</div>-->
+
+
+      <!--NavbarFin-->
+
+      </nav>
+      <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+      </div>
+
+
+
+
+
